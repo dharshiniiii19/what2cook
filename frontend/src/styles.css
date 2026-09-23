@@ -1,0 +1,238 @@
+/* src/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ink: #2b2a28;
+  --paper: #fbf8f3;
+  --sage: #5c6b4f;
+  --sage-dark: #454f3b;
+  --mustard: #d98e2b;
+  --line: #e3ddd0;
+  --card: #ffffff;
+  --error: #b3432b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  margin: 0 0 0.5em;
+}
+
+.app-shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1rem;
+}
+
+.app-header h1 {
+  font-size: 1.6rem;
+  color: var(--sage-dark);
+}
+
+.start-over {
+  background: none;
+  border: none;
+  color: var(--ink);
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.start-over:hover { opacity: 1; }
+
+.app-error {
+  background: #fbeae5;
+  color: var(--error);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.app-saved {
+  background: #eef2e9;
+  color: var(--sage-dark);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+/* Upload */
+.upload-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 260px;
+  border: 1.5px dashed var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  padding: 2rem;
+  background: var(--card);
+}
+.upload-drop-title { font-size: 1.1rem; font-weight: 500; }
+.upload-drop-sub { color: #756f63; font-size: 0.9rem; }
+.upload-preview { max-width: 100%; max-height: 320px; border-radius: 8px; object-fit: cover; }
+.upload-status { color: var(--sage-dark); margin-top: 1rem; }
+.upload-error { color: var(--error); margin-top: 1rem; }
+
+/* Ingredient chips */
+.chips-title { font-size: 1.2rem; }
+.chips-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 1rem 0;
+}
+.chip {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.5rem 0.4rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+}
+.chip-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #9a9284;
+  padding: 0 0.2rem;
+}
+.chip-remove:hover { color: var(--error); }
+
+.chips-add { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.chips-add input {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.chips-add button, .continue-button, .prefs-submit, .save-button {
+  background: var(--sage);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.chips-add button:hover, .continue-button:hover, .prefs-submit:hover, .save-button:hover {
+  background: var(--sage-dark);
+}
+.continue-button:disabled, .prefs-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.continue-button { margin-top: 0.5rem; }
+
+/* Preferences form */
+.prefs-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.prefs-row { display: flex; gap: 1rem; }
+.prefs-row label { flex: 1; }
+.prefs-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #4a463f;
+}
+.prefs-form input, .prefs-form select {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+.prefs-submit { margin-top: 0.5rem; align-self: flex-start; }
+
+/* Recipe grid */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.recipe-card {
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+.recipe-card:hover { border-color: var(--sage); }
+.recipe-card h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+.recipe-card-meta { color: #756f63; font-size: 0.85rem; margin: 0 0 0.4rem; }
+.recipe-card-missing { font-size: 0.85rem; color: var(--mustard); margin: 0; }
+
+/* Recipe detail */
+.back-link {
+  background: none;
+  border: none;
+  color: var(--sage-dark);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.recipe-detail-meta { color: #756f63; margin-bottom: 1.2rem; }
+.recipe-detail-columns {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.recipe-detail-columns > div { flex: 1; }
+.recipe-detail-columns h3, .recipe-detail h3 { font-size: 1rem; }
+.recipe-steps { padding-left: 1.2rem; }
+.recipe-steps li { margin-bottom: 0.5rem; }
+
+.modify-form {
+  margin: 2rem 0 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+.modify-form label { display: block; font-size: 0.9rem; margin-bottom: 0.5rem; }
+.modify-row { display: flex; gap: 0.5rem; }
+.modify-row input {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.modify-row button {
+  background: var(--mustard);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+}
+.modify-error { color: var(--error); margin-top: 0.5rem; font-size: 0.9rem; }
